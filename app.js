@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import Welcome from './welcome/welcome';
-
+import Welcome from './src/welcome/welcome';
+import "./index.scss"
 class App extends Component {
   render() {
     return (
       <div>
-       <Welcome />
+        <Welcome />
       </div>
     );
   }

@@ -1,11 +1,13 @@
 {
     "presets": [
-        "@babel/preset-env",
-        "@babel/preset-react"
+        "@babel/preset-env", //将es6语法转化为ES5
+        "@babel/preset-react" //react 语法转译
     ],
     "plugins": [
-        "@babel/plugin-proposal-object-rest-spread",
-        "@babel/plugin-transform-runtime"
+        "@babel/plugin-proposal-object-rest-spread", //支持扩展运算符（...）
+        //按babel 默认会将这些辅助函数内联到每一个 js 文件里，这样文件多的时候，项目就会很大。
+        //所以 babel 提供了 transform-runtime 来将这些辅助函数“搬”到一个单独的模块 babel-runtime 中，这样做能减小项目文件的大小。
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-proposal-class-properties" //支持classProperties
     ]
-   
 }
