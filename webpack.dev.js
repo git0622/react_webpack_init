@@ -13,10 +13,5 @@ module.exports = merge(common, {
     plugins: [
         new webpack.NamedModulesPlugin(),//允许在运行时更新各种模块，而无需进行完全刷新
         new webpack.HotModuleReplacementPlugin(),//允许在运行时更新各种模块，而无需进行完全刷新，
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-            // filename: "[name].[contenthash].css",
-            // chunkFilename: "[name].[contenthash].css"
-        })
     ],
 });

@@ -59,9 +59,9 @@ module.exports = merge(common, {
         //     'process.env.NODE_ENV': JSON.stringify('production')
         // }),//webpack3 需要手动设置process
         new MiniCssExtractPlugin({
-            filename: '[name].css',
-            // filename: "[name].[contenthash].css",
-            // chunkFilename: "[name].[contenthash].css"
+            // filename: '[name].css',
+            filename: "[name].[contenthash].css",
+            chunkFilename: "[name].[contenthash].css",
         })
     ],
 

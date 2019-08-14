@@ -2,8 +2,8 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const devMode = process.env.NODE_ENV !== 'production'
-console.log("process.env.NODE_ENV========",process.env.NODE_ENV)
+const devMode = process.env.NODE_ENV !== 'production';
+console.log("process.env.NODE_ENV========", process.env.NODE_ENV);
 module.exports = {
     entry: {
         app: './app.js'
@@ -15,7 +15,8 @@ module.exports = {
                 use: [
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     // 'style-loader', //将.css文件添加到html文件的<head>中(以<style></style>形式).
-                    'css-loader'
+                    'css-loader',
+                    "postcss-loader"
                 ]
             },
             {
@@ -24,7 +25,9 @@ module.exports = {
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     // 'style-loader', //将.css文件添加到html文件的<head>中(以<style></style>形式).
                     'css-loader',//寻找css文件
-                    'less-loader'//寻找识别出less文件,less插件再将less文件转化为css文件
+                    "postcss-loader",
+                    'less-loader',//寻找识别出less文件,less插件再将less文件转化为css文件
+                    
                 ]
             },
             {
@@ -33,13 +36,23 @@ module.exports = {
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     // 'style-loader', //将.css文件添加到html文件的<head>中(以<style></style>形式).
                     "css-loader",
-                    "sass-loader"
+                    "postcss-loader",
+                    "sass-loader",
+                    
                 ]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
-                    'file-loader'
+                    {
+                        loader: "url-loader",//图片大小小于上限值，则将图片转base64字符串，；否则使用file-loader加载图片，都是为了提高浏览器加载图片速度
+                        options: {
+                            name: "[name].[hash:8].[ext]",
+                            limit: 20000, // 小于 20kb 的图片进行 base64 编码。
+                            publicPath: "assets/imgs",//build文件中引用图片时的路径
+                            outputPath: "assets/imgs"//相对于output所输出文件的路径
+                        }
+                    }
                 ]
             },
             {
@@ -72,6 +85,12 @@ module.exports = {
         new CleanWebpackPlugin({
             verbose: true, //开启在控制台输出信息
         }),//清理 /dist 文件夹
+        // new MiniCssExtractPlugin({
+        //     filename: '[name].css',
+        //     // filename: "[name].[contenthash].css",
+        //     // chunkFilename: "[name].[contenthash].css"
+        // }),
+
         new HtmlWebpackPlugin({
             title: 'Output Management', //输出文件标题,
             // 虚拟的html文件名 index.html

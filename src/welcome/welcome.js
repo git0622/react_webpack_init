@@ -25,7 +25,7 @@ class Welcome extends Component {
       <div>
         <HashRouter> {/*react-router-dom方法里有BroserRouter和HashRouter ,自行选一个使用*/}
           <div className="welcome">{/*一定要有个标签将路由组件包起来*/}
-            <ul className="clearfix">
+            <ul>
               <li><Link to="/home" className={`${menuType==="home"?"active":""}`} onClick={this.currentMenu.bind(this, 'home')}>首页</Link></li> {/*Link相当于a标签 这里的to和Route的path对应*/}
               <li><Link to="/news" className={`${menuType==="news"?"active":""}`} onClick={this.currentMenu.bind(this, 'news')}>新闻</Link></li>
               <li><Link to="/about" className={`${menuType==="about"?"active":""}`} onClick={this.currentMenu.bind(this, 'about')}>关于</Link></li>
