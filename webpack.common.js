@@ -84,13 +84,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({
             verbose: true, //开启在控制台输出信息
-        }),//清理 /dist 文件夹
-        // new MiniCssExtractPlugin({
-        //     filename: '[name].css',
-        //     // filename: "[name].[contenthash].css",
-        //     // chunkFilename: "[name].[contenthash].css"
-        // }),
-
+        }),
+        //清理 /dist 文件夹
         new HtmlWebpackPlugin({
             title: 'Output Management', //输出文件标题,
             // 虚拟的html文件名 index.html
@@ -104,10 +99,5 @@ module.exports = {
         }),
 
     ],
-    // output: {
-    //     // filename: '[name].bundle.js',
-    //     filename: '[name].[chunkhash].js',
-    //     path: path.resolve(__dirname, 'dist')
-    // },
 
 };

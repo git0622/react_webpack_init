@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --open --config webpack.common.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --open --config webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js"
   },
   "author": "",
@@ -23,6 +23,7 @@
     "@babel/runtime": "^7.5.5",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
+    "bigdecimal": "^0.6.1",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
