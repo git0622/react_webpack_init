@@ -8,6 +8,7 @@
         //按babel 默认会将这些辅助函数内联到每一个 js 文件里，这样文件多的时候，项目就会很大。
         //所以 babel 提供了 transform-runtime 来将这些辅助函数“搬”到一个单独的模块 babel-runtime 中，这样做能减小项目文件的大小。
         "@babel/plugin-transform-runtime",
-        "@babel/plugin-proposal-class-properties" //支持classProperties
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],//设置class装饰器
+        ["@babel/plugin-proposal-class-properties", {"loose": true}],//设置装饰器
     ]
 }
